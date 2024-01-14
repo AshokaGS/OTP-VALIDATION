@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTP VALIDATION</title>
+    <style>
+      body {
+        background-color: gray;
+        .main {
+          height: 400px;
+          width: 370px;
+          background: linear-gradient(45deg,rgba(70, 131, 180),rgba(255, 0, 255));
+          /* background: rgba(240, 248, 255, 0.438); */
+          backdrop-filter: blur(5px);
+          border-radius: 20px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+          hr{
+            width: 100%;
+          }
+          button{
+            height: 50px;
+            width: 150px;
+            border-radius: 15px;
+            font-size: 16px;
+            background-color: springgreen;
+            border: none;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+          }
+          button:hover{
+            box-shadow: 1px 1px 6px 5px rgba(0, 0, 0, 0.452) inset;
+          }
+          .inputs{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            input{
+                width: 7%;
+                height: 35px;
+                border-radius: 5px;
+                border-top-color: transparent;
+                border-left-color: transparent;
+                border-right-color: black;
+                border-bottom-color:black;
+                font-size: 20px;
+                text-align: center;
+
+
+            }
+            input:focus{
+                outline: none;
+                font-size: 20px;
+                text-align: center;
+            }
+            
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <button onclick="otp()">Generate OTP</button>
+      <h1 id="h2"></h1>
+      <hr />
+      <div id="11" class="inputs">
+        <input type="text" name="" id="1" />
+        <input type="text" name="" id="2" />
+        <input type="text" name="" id="3" />
+        <input type="text" name="" id="4" />
+      </div>
+      <button onclick="val()">Validate OTP</button>
+    </div>
+    <script>
+        function otp(){
+        let randNUm =Math.random() * 9043   ///generate OTP 
+        a=Math.round(randNUm)         ///store in separate variable
+        console.log("original otp",a);
+        document.getElementById('h2').innerHTML=` OTP ${a}`
+        return a 
+        }
+
+        function val(){
+        let o1 =document.getElementById("1").value
+        let o2 =document.getElementById("2").value
+        let o3 =document.getElementById("3").value
+        let o4 =document.getElementById("4").value
+            s=o1+o2+o3+o4
+            console.log(s);
+
+            if(s==a){
+                console.log('correct');
+                let fin=document.getElementById('11').querySelectorAll("input")
+                for (j=0; j<=3;j++){
+                    fin[j].style.border='4px green solid'
+                }
+            }
+        else{
+            console.log('wrong');
+            let fin=document.getElementById('11').querySelectorAll("input")
+                for (j=0; j<=3;j++){
+                    fin[j].style.border='4px red solid'
+                }
+        }
+    }
+    
+        </script>
+  </body>
+</html>
